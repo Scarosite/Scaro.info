@@ -1,52 +1,42 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Scaro</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      margin: 0;
-      padding: 0;
-      background: #fafafa;
-      color: #222;
-      display: flex;
-      flex-direction: column;
-      min-height: 100vh;
-    }
-    header {
-      background: #222;
-      color: #fff;
-      padding: 1rem;
-      text-align: center;
-    }
-    main {
-      flex: 1;
-      padding: 2rem;
-      max-width: 800px;
-      margin: auto;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      font-size: 0.875rem;
-      color: #666;
-    }
-  </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SCARO</title>
+    <style>
+        body {
+            background-color: #0d0d0d;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            padding: 40px 0;
+        }
+        img.logo {
+            width: 200px;
+        }
+        .video-wrapper {
+            margin-top: 40px;
+        }
+        iframe {
+            width: 80%;
+            height: 60vh;
+            border: none;
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Bienvenue sur Scaro</h1>
-  </header>
-  <main>
-    <p>Bienvenue ! Ce site est hébergé sur GitHub Pages. Vous pouvez personnaliser ce texte.</p>
-  </main>
-  <footer>
-    © <span id="year"></span> Scaro
-  </footer>
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
+    <header>
+        <img src="LOGO_SCARO_WHITE.png" alt="SCARO Logo" class="logo" />
+    </header>
+
+    <div class="video-wrapper">
+        <!-- Remplacez l'URL par le lien d'intégration si nécessaire -->
+        <iframe src="https://drive.google.com/file/d/1wANZgkITxju4rkMNBx6l8TEOo344P0jC/preview" allow="autoplay"></iframe>
+    </div>
 </body>
 </html>
