@@ -1,42 +1,145 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SCARO</title>
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            padding: 40px 0;
-        }
-        img.logo {
-            width: 200px;
-        }
-        .video-wrapper {
-            margin-top: 40px;
-        }
-        iframe {
-            width: 80%;
-            height: 60vh;
-            border: none;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SCARO</title>
+  <style>
+    :root{
+      --space-xl: clamp(48px, 8vw, 96px);
+      --space-lg: clamp(24px, 5vw, 48px);
+      --title-size: clamp(28px, 4.5vw, 56px);
+      --text-size: clamp(16px, 2.2vw, 22px);
+      --logo-hero: clamp(180px, 22vw, 420px);
+      --icon-size: clamp(40px, 6vw, 72px);
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: #0d0d0d;
+      color: #fff;
+      font-family: Arial, sans-serif;
+    }
+
+    /* --- HERO VIDÉO --- */
+    .video-hero {
+      position: relative;
+      width: 100vw;
+      max-width: 100%;
+      margin: 0 auto;
+      overflow: hidden;
+      background: #000;
+    }
+
+    /* Ratio 16/9 par défaut, s’adapte à la largeur */
+    .video-hero::before {
+      content: "";
+      display: block;
+      padding-top: 56.25%; /* 16:9 */
+    }
+
+    .video-hero iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    /* Logo surimprimé, très grand, en haut */
+    .video-hero .logo-overlay {
+      position: absolute;
+      top: clamp(8px, 2.5vw, 24px);
+      left: 50%;
+      transform: translateX(-50%);
+      width: var(--logo-hero);
+      opacity: 0.9;
+      pointer-events: none; /* le clic passe à la vidéo */
+      filter: drop-shadow(0 6px 16px rgba(0,0,0,0.65));
+    }
+
+    /* --- SECTIONS TEXTE --- */
+    .content {
+      width: min(1200px, 92vw);
+      margin: 0 auto;
+    }
+
+    .dates-title {
+      font-size: var(--title-size);
+      font-weight: 800;
+      line-height: 1.1;
+      margin: 0;               /* collé sous la vidéo */
+      padding-top: 18px;       /* micro-respiration */
+      letter-spacing: 0.2px;
+    }
+
+    .dates-sub {
+      font-size: var(--text-size);
+      opacity: 0.9;
+      margin: 12px 0 0 0;      /* juste sous le titre */
+    }
+
+    /* --- RÉSEAUX SOCIAUX --- */
+    .social {
+      display: flex;
+      gap: clamp(24px, 4.5vw, 56px);
+      align-items: center;
+      justify-content: center;
+      margin: var(--space-xl) auto;       /* très grosse marge */
+      padding: var(--space-lg) 0;
+    }
+
+    .social a {
+      display: inline-flex;
+      width: var(--icon-size);
+      height: var(--icon-size);
+      opacity: 0.95;
+      transition: transform 180ms ease, opacity 180ms ease;
+    }
+
+    .social a:hover,
+    .social a:focus {
+      transform: scale(1.08);
+      opacity: 1;
+      outline: none;
+    }
+
+    .social svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+      fill: #fff; /* logos blancs */
+    }
+
+    /* Un peu d’air en bas de page */
+    .footer-spacer { height: clamp(24px, 6vw, 72px); }
+  </style>
 </head>
 <body>
-    <header>
-        <img src="LOGO_SCARO_WHITE.png" alt="SCARO Logo" class="logo" />
-    </header>
 
-    <div class="video-wrapper">
-        <!-- Remplacez l'URL par le lien d'intégration si nécessaire -->
-        <iframe src="https://drive.google.com/file/d/1wANZgkITxju4rkMNBx6l8TEOo344P0jC/preview" allow="autoplay"></iframe>
-    </div>
-</body>
-</html>
+  <!-- HERO vidéo plein largeur, en haut -->
+  <section class="video-hero">
+    <!-- Remplace si besoin par un autre embed (YouTube/Vimeo, etc.) -->
+    <iframe
+      src="https://drive.google.com/file/d/1wANZgkITxju4rkMNBx6l8TEOo344P0jC/preview"
+      allow="autoplay; encrypted-media"
+      allowfullscreen
+    ></iframe>
+
+    <!-- Logo très grand, en surimpression en haut -->
+    <img src="LOGO_SCARO_WHITE.png" alt="SCARO" class="logo-overlay" />
+  </section>
+
+  <!-- Titre collé sous la vidéo + sous-texte (sans défilement) -->
+  <main class="content">
+    <h1 class="dates-title">Prochaines dates&nbsp;:</h1>
+    <p class="dates-sub">Actualisation prochaine des dates nantaises</p>
+
+    <!-- Réseaux sociaux avec très grosse marge -->
+    <nav class="social" aria-label="Réseaux sociaux">
+      <!-- Instagram -->
+      <a href="https://www.instagram.com/scaromusiqueoff/" target="_blank" rel="noopener noreferrer" aria-label="Instagram SCARO">
+        <!-- Logo Instagram blanc (SVG) -->
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 3.5A5.5 5.5 0 1
