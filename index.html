@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Scaro — Nuit de l'Erdre 2026</title>
+  <meta name="description" content="Scaro — artiste. Candidature pour la Nuit de l'Erdre 2026. Site simple, vidéo de fond, logo en overlay." />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --max-width:1200px;
+      --accent:#ffffff;
+      --muted: rgba(255,255,255,0.85);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+      color:var(--accent);
+      background:#000;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* full-screen video background */
+    .bg-video{
+      position:fixed;
+      inset:0;
+      width:100%;
+      height:100%;
+      object-fit:cover;
+      z-index:-2;
+    }
+
+    /* subtle overlay gradient to keep text readable */
+    .overlay{
+      position:fixed;
+      inset:0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.18) 0%, rgba(0,0,0,0.55) 75%);
+      z-index:-1;
+      pointer-events:none;
+    }
+
+    header{
+      max-width:var(--max-width);
+      margin:28px auto 0;
+      padding:0 20px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+    .logo img{
+      height:56px;
+      width:auto;
+      display:block;
+    }
+    .logo .brand{
+      font-weight:800;
+      letter-spacing:0.4px;
+      font-size:18px;
+    }
+
+    main{
+      min-height:calc(100vh - 120px);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      padding:40px 20px;
+    }
+
+    .hero{
+      max-width:920px;
+      width:100%;
+      backdrop-filter: blur(4px) saturate(110%);
+      -webkit-backdrop-filter: blur(4px) saturate(110%);
+    }
+
+    .card{
+      padding:48px 28px;
+    }
+
+    h1{
+      margin:0 0 12px 0;
+      font-size:clamp(28px,6vw,56px);
+      line-height:1.02;
+      font-weight:800;
+      text-transform:uppercase;
+      letter-spacing:1px;
+    }
+
+    p.lead{
+      margin:0 0 20px 0;
+      font-size:clamp(14px,2.4vw,18px);
+      color:var(--muted);
+    }
+
+    .cta-row{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+      flex-wrap:wrap;
+      margin-top:18px;
+    }
+
+    .btn{
+      border:0;
+      padding:12px 18px;
+      font-weight:600;
+      border-radius:10px;
+      cursor:pointer;
+      text-decoration:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    .btn-primary{
+      background:linear-gradient(90deg, rgba(255,255,255,0.12), rgba(255,255,255,0.06));
+      color:var(--accent);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+      backdrop-filter: blur(6px);
+    }
+    .btn-secondary{
+      background:transparent;
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.12);
+    }
+
+    footer{
+      max-width:var(--max-width);
+      margin:28px auto 40px;
+      padding:0 20px;
+      color:rgba(255,255,255,0.6);
+      font-size:13px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    /* small screens */
+    @media (max-width:640px){
+      header{margin-top:18px}
+      .logo img{height:48px}
+      .card{padding:28px 18px}
+    }
+
+    /* visually-hidden for accessibility */
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  </style>
+</head>
+<body>
+
+  <!-- Video background (muted, autoplay, loop). Replace https://drive.google.com/uc?export=download&id=1wANZgkITxju4rkMNBx6l8TEOo344P0jC with your file in the repo. -->
+  <video class="bg-video" autoplay muted loop playsinline id="bgVideo" poster="/assets/bg-poster.jpg">
+    <source src="/assets/bg.mp4" type="video/mp4">
+    <!-- fallback image -->
+  </video>
+  <div class="overlay" aria-hidden="true"></div>
+
+  <header>
+    <div class="logo">
+      <!-- Replace https://drive.google.com/uc?export=download&id=1coBUp_DMne29qUmssO9vSRmQLi_ZdUy4 with your provided logo file (black logo). -->
+      <img src="/assets/logo.png" alt="Scaro — logo" />
+      <div>
+        <div class="brand">Scaro</div>
+        <div style="font-size:12px;color:rgba(255,255,255,0.6);">Artiste — Nuit de l'Erdre 2026</div>
+      </div>
+    </div>
+
+    <nav aria-label="Navigation principale">
+      <a href="#bio" class="btn btn-secondary">Bio</a>
+      <a href="#medias" class="btn btn-secondary">Médias</a>
+      <a href="#contact" class="btn btn-primary">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero card" role="main">
+      <h1>Scaro</h1>
+      <p class="lead">Artiste électro/indé. Candidature pour la Nuit de l'Erdre 2026 — performance live énergique et visuelle.</p>
+
+      <div class="cta-row">
+        <a href="#watch" class="btn btn-primary" id="watchBtn">Voir extrait</a>
+        <a href="mailto:booking@scaro.info?subject=Candidature%20Nuit%20de%20l'Erdre%202026" class="btn btn-secondary">Contact booking</a>
+      </div>
+
+      <div style="margin-top:26px;color:rgba(255,255,255,0.58);font-size:13px;">Vidéo de fond: muette — optimisée pour GitHub Pages. Si la vidéo ne démarre pas sur mobile, affiche une image fixe.</div>
+    </section>
+  </main>
+
+  <footer>
+    <div>© Scaro — 2025</div>
+    <div id="credits">Site pour candidature — Nuit de l'Erdre 2026</div>
+  </footer>
+
+  <!-- Accessible hidden controls for the video (visible only to assistive tech) -->
+  <div class="sr-only" aria-hidden="false">
+    <button id="toggleAudio">Activer le son</button>
+    <button id="pausePlay">Pause / Play</button>
+  </div>
+
+  <script>
+    // Minimal script: smooth scroll + optional video pause/play
+    (function(){
+      const watchBtn = document.getElementById('watchBtn');
+      const bgVideo = document.getElementById('bgVideo');
+      watchBtn && watchBtn.addEventListener('click', (e)=>{
+        e.preventDefault();
+        // show a short visual feedback: restart video to show an "excerpt" effect
+        if(bgVideo){
+          bgVideo.currentTime = 0;
+          bgVideo.play().catch(()=>{});
+          watchBtn.blur();
+        }
+      });
+
+      // In some browsers (esp mobile) autoplay muted is allowed; ensure muted
+      if(bgVideo){
+        bgVideo.muted = true;
+        bgVideo.setAttribute('aria-hidden','true');
+      }
+
+      // small enhancement: if video fails to load, hide it so fallback poster shows
+      bgVideo.addEventListener('error', ()=>{
+        bgVideo.style.display = 'none';
+      });
+
+    })();
+  </script>
+
+  
+</body>
+</html>
